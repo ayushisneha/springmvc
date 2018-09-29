@@ -14,7 +14,7 @@
 </style>
 </head>
 <body onload='document.loginForm.j_username.focus();'>
-	<h3>Custom Login Page</h3>
+	<h3>Login</h3>
 
 	<%
 		String errorString = (String) request.getAttribute("error");
@@ -41,5 +41,9 @@
 		</table>
 
 	</form>
+	<h3>IF NOT REGISTERED , REGISTER HERE</h3>
+	<form action="register">
+<input value="Register" type="submit">
+</form>
 </body>
 </html>

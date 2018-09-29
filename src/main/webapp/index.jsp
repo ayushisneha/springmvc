@@ -23,5 +23,8 @@ return;
 }
 %>
 <a href="<c:url value="/j_spring_security_logout" />"> Logout</a>
+<form action="register">
+<input value="Register" type="submit">
+</form>
 </body>
 </html>

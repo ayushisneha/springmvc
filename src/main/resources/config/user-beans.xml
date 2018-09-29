@@ -8,4 +8,5 @@
         <property name="dataSource" ref="dataSource" />
     </bean>
     <bean id="itemdao" class="com.ayushi.dao.ItemdaoImpl"></bean>
+    <bean id="categorydao" class="com.ayushi.dao.CategorydaoImpl"></bean>
 </beans>
