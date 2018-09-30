@@ -9,4 +9,6 @@
     </bean>
     <bean id="itemdao" class="com.ayushi.dao.ItemdaoImpl"></bean>
     <bean id="categorydao" class="com.ayushi.dao.CategorydaoImpl"></bean>
+    <bean id="itemsdao" class="com.ayushi.dao.ItemsdaoImpl"></bean>
+    <bean id="admindao" class="com.ayushi.dao.AdmindaoImpl"></bean>
 </beans>

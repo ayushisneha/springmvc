@@ -9,12 +9,13 @@
 <head>
 <%@ page isELIgnored="false" %>
 <meta charset="UTF-8">
-<title>Category</title>
+<title>Items</title>
 </head>
 <body>
-<c:forEach items="${list }" var="cat">
+<h2><a href="additems/${catid }">ADD ITEMS</a></h2>
+<c:forEach items="${list }" var="item">
 <table>
-<tr><td><a href="buyitem/${cat.cid }">${cat.cname }</a></td></tr><br>
+<td><tr>${item.name } ${item.price } </tr></td><br>
 </table>
 </c:forEach> 
 </body>

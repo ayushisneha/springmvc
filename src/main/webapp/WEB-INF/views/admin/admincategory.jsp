@@ -12,10 +12,11 @@
 <title>Category</title>
 </head>
 <body>
+<h2><a href="addcat">ADD CATEGORY</a></h2>
 <c:forEach items="${list }" var="cat">
-<table>
-<tr><td><a href="buyitem/${cat.cid }">${cat.cname }</a></td></tr><br>
-</table>
+
+<h3><a href="adminbuyitem/${cat.cid }">${cat.cname }</a></h3><br>
+
 </c:forEach> 
 </body>
 </html>

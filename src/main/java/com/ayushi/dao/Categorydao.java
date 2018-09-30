@@ -6,5 +6,6 @@ import com.ayushi.model.Category;
 
 public interface Categorydao {
 	public List<Category> getallcat();
+	public void addCat(Category category);
 
 }

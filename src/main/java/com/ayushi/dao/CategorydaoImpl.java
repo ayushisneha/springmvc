@@ -24,9 +24,15 @@ public class CategorydaoImpl implements Categorydao {
 	public List<Category> getallcat() {
 		// TODO Auto-generated method stub
 		List<Category> list;
-		String sql="select * from category";
+		String sql="select * from category order by cname";
 		list=(List<Category>) jdbcTemplate.query(sql, new BeanPropertyRowMapper<Category>(Category.class));
 		return list;
+	}
+	public void addCat(Category category) {
+		// TODO Auto-generated method stub
+		String sql="insert into category set cname=?";
+		Object[] object= {category.getCname()};
+		jdbcTemplate.update(sql,object);
 	}
 	
 
