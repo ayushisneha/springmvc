@@ -12,6 +12,7 @@
 <title>Items</title>
 </head>
 <body>
+<h2><a href="cart">GO TO CART</a></h2>
 <c:forEach items="${list }" var="item">
 
 <h2>Name:${item.name }<br>Price: ${item.price } </h2>

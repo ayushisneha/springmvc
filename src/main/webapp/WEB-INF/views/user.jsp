@@ -18,6 +18,6 @@
     <h2><a href="./allcat">view all items</a></h2>
     <h2><a href="./location">Locations</a></h2>
     <h2><a href="./stage">Stage</a></h2>
-    
+    <h2><a href="./cart">Go TO CART</a></h2>
 </body>
 </html>

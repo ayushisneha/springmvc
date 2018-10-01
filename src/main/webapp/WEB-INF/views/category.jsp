@@ -12,6 +12,7 @@
 <title>Category</title>
 </head>
 <body>
+<h2>ALL CATEGORY</h2>
 <c:forEach items="${list }" var="cat">
 <table>
 <tr><td><a href="buyitem/${cat.cid }">${cat.cname }</a></td></tr><br>
