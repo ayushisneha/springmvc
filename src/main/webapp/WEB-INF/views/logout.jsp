@@ -9,5 +9,6 @@
 </head>
 <body>
  <h1>You have successfully logged off from application !!!!!!</h1>
+ <h2><a href="login">Login</a></h2>
 </body>
 </html>

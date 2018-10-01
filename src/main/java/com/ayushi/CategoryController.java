@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.ayushi.dao.Categorydao;
 import com.ayushi.model.Category;
 import com.ayushi.model.Item;
+import com.ayushi.model.Location;
 
 @Controller
 public class CategoryController {
@@ -26,6 +27,13 @@ public class CategoryController {
 		List<Category> list=categorydao.getallcat();
 		model.addAttribute("list",list);
 		return "category";
+	}
+	@RequestMapping("location")
+	public String location(Model model)
+	{
+		List<Location> list=categorydao.getallloc();
+		model.addAttribute("list",list);
+		return "location";
 	}
 	@RequestMapping("admin/allcat")
 	public String categoryadmin(Model model)
