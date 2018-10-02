@@ -1,10 +1,13 @@
 package com.ayushi.model;
 
+import java.sql.Date;
+
 public class Location {
 	private int lid;
 	private String lname;
 	private String address;
 	private float price;
+	private Date date;
 	public int getLid() {
 		return lid;
 	}
@@ -28,6 +31,12 @@ public class Location {
 	}
 	public void setPrice(float price) {
 		this.price = price;
+	}
+	public Date getDate() {
+		return date;
+	}
+	public void setDate(Date date) {
+		this.date = date;
 	}
 
 }

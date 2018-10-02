@@ -13,10 +13,12 @@
 </head>
 <body>
 <h2><a href="additems/${catid }">ADD ITEMS</a></h2>
+<div class="list-group">
 <c:forEach items="${list }" var="item">
 <table>
 <td><tr>${item.name } ${item.price } </tr></td><br>
 </table>
-</c:forEach> 
+</c:forEach>
+</div> 
 </body>
 </html>

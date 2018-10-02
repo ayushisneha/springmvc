@@ -32,7 +32,7 @@ public class CartController {
 		String uid=request.getUserPrincipal().getName();
 		Cart cart=new Cart();
 		cartdao.addtocart(iid, uid, cart);
-		return "user";
+		return "redirect:/allcat";
 	}
 	@RequestMapping(value="buyitem/cart")
 	public String showcart(Model model,HttpServletRequest request)
