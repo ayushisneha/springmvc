@@ -62,7 +62,7 @@ public class LoginController {
 	public String logout(ModelMap model) {
 //		model.addAttribute("message",
 //				"You have successfully logged off from application !");
-		return "logout";
+		return "login";
 
 	}
 

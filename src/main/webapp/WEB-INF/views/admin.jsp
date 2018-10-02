@@ -10,19 +10,25 @@
 <link href="webjars/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" />
 </head>
 <body>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#">RANJAN DECORATORS</a>
+			</div>
+		</div>
+	</nav>
 <div class="container">
 <div class="jumbotron">
     <c:if test="${pageContext.request.userPrincipal.name != null}">
         <h2>
-            Welcome to the admin page :<mark>${user}</mark>  | <a
-                href="<c:url value="/j_spring_security_logout" />"> Logout</a>
+            Welcome to the admin page :<mark>${user}</mark>  | <a href="<c:url value="/j_spring_security_logout" />"><span class="glyphicon glyphicon-log-out"></span>
+						Logout</a>
         </h2>
     </c:if>
     </div>
     <h2> <a href="admin/allusers">All USERS</a></h2>
     <h2> <a href="admin/allcat">All Category</a></h2>
     <h2><a href="admin/alllocation">Location</a></h2>
-    <h2><a href="admin/allstage">Stage</a></h2>
     </div>
 </body>
 </html>

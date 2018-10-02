@@ -31,7 +31,7 @@ public class CartdaoImpl implements Cartdao{
 	public List<Cart> getcart(String uid) {
 		// TODO Auto-generated method stub
 		List<Cart> list;
-		String sql="select * from cart where uid='+uid'";
+		String sql="select * from cart where uid='"+uid+"'";
 		list=(List<Cart>) jdbcTemplate.query(sql, new BeanPropertyRowMapper<Cart>(Cart.class));
 		return list;
 	}
