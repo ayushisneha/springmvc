@@ -10,6 +10,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 
 import com.ayushi.model.Category;
 import com.ayushi.model.Location;
+import com.ayushi.model.User;
 
 public class CategorydaoImpl implements Categorydao {
 	@Autowired
@@ -42,6 +43,13 @@ public class CategorydaoImpl implements Categorydao {
 		String sql="insert into category set cname=?";
 		Object[] object= {category.getCname()};
 		jdbcTemplate.update(sql,object);
+	}
+	public List<User> getallusers() {
+		// TODO Auto-generated method stub
+		List<User> list;
+		String sql="select * from users order by username";
+		list=(List<User>) jdbcTemplate.query(sql, new BeanPropertyRowMapper<User>(User.class));
+		return list;
 	}
 	
 

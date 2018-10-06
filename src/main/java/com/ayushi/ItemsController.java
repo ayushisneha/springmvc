@@ -67,6 +67,13 @@ public class ItemsController {
 			return "redirect:/admin";
 		}
 	}
+	@RequestMapping("admin/adminbuyitem/deleteitems/{itemId}")
+	public String deleteItem(@PathVariable(value="itemId") int itemId)
+	{
+		itemsdao.deleteItem(itemId);
+		return "redirect:/admin";
+	}
+	
 	@RequestMapping(value="/readxml",method=RequestMethod.POST)
 	public ModelAndView upload(@RequestParam CommonsMultipartFile file,HttpSession session) {
 		String path=session.getServletContext().getRealPath("/");

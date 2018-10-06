@@ -16,6 +16,7 @@ import com.ayushi.dao.Categorydao;
 import com.ayushi.model.Category;
 import com.ayushi.model.Item;
 import com.ayushi.model.Location;
+import com.ayushi.model.User;
 
 @Controller
 public class CategoryController {
@@ -34,6 +35,13 @@ public class CategoryController {
 		List<Location> list=categorydao.getallloc();
 		model.addAttribute("list",list);
 		return "location";
+	}
+	@RequestMapping("admin/allusers")
+	public String allusers(Model model)
+	{
+		List<User> list=categorydao.getallusers();
+		model.addAttribute("list",list);
+		return "admin/alluser";
 	}
 	@RequestMapping("admin/allcat")
 	public String categoryadmin(Model model)

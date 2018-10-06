@@ -43,7 +43,13 @@ public class ItemsdaoImpl implements Itemsdao {
 		list=(List<Items>) jdbcTemplate.query(sql,new BeanPropertyRowMapper<Items>(Items.class));
 		return list;
 	}
-	
+	public void deleteItem(int itemId) {
+		// TODO Auto-generated method stub
+		String sql="delete from items where iid= "+itemId;
+		jdbcTemplate.update(sql);
+		String s="delete from cart where iid= "+itemId;
+		jdbcTemplate.update(s);
+	}
 	
 
 }

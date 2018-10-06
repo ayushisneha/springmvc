@@ -42,5 +42,14 @@ public class CartController {
 		model.addAttribute("list", list);
 		return "cart";
 	}
+	@RequestMapping(value="buyitem/update/{iid}")
+	public String addquant(Model model,@PathVariable(value="iid") int iid,HttpServletRequest request)
+	{
+		String uid=request.getUserPrincipal().getName();
+		Cart cart = new Cart();
+		int quantity = Integer.parseInt(request.getParameter("quantity"));
+		cartdao.addquantity(quantity, iid, uid,cart);
+		return "redirect:/buyitem/cart";
+	}
 
 }

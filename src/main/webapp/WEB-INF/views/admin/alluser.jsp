@@ -7,7 +7,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 <head>
-<title>ADMIN CATEGORY</title>
+<title>all users</title>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <link href="/dbms/webjars/bootstrap/3.3.6/css/bootstrap.min.css"
@@ -22,8 +22,8 @@
 				<a class="navbar-brand" href="#">RANJAN DECORATORS</a>
 			</div>
 			<ul class="nav navbar-nav">
-				<li class="active"><a href="/dbms/admin">Home</a></li>
-				<li><a href="addcat">ADD CATEGORY</a></li>
+				<li><a href="/dbms/admin">Home</a></li>
+				
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href="<c:url value="/j_spring_security_logout" />"><span class="glyphicon glyphicon-log-out"></span>
@@ -34,19 +34,29 @@
 	<br>
 	<br>
 	<br>
-	
 	<div class="container">
-	<h2><a href="addcat"><span class="glyphicon glyphicon-plus"></span>ADD CATEGORY</a></h2>
-		<div class="list-group">
-			<c:forEach items="${list }" var="cat">
-
-				<li class="list-group-item"><a href="adminbuyitem/${cat.cid }">${cat.cname }</a>
-				</li>
-				<br>
-
-			</c:forEach>
-		</div>
-	</div>
+	<table class="table table-striped">
+	<thead>
+      <tr>
+        <th>Username</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+      </tr>
+    </thead>
+    <tbody>
+    
+    <c:forEach items="${list }" var="item">
+    <tr>
+    <td>${item.username }</td>
+    <td>${item.name }</td>
+    <td>${item.email }</td>
+    <td>${item.phone }</td>
+    </tr>
+    </c:forEach>
+    </tbody>
+</table>
+</div>
 	<script src="/dbms/webjars/jquery/1.11.1/jquery.min.js"></script>
 	<script src="/dbms/webjars/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 </body>

@@ -45,7 +45,6 @@
       <tr>
         <th>ITEM</th>
         <th>PRICE</th>
-        <th>QUANTITY</th>
         <th>ADD TO CART</th>
       </tr>
     </thead>
@@ -55,7 +54,6 @@
     <tr>
     <td>${item.name }</td>
     <td>${item.price }</td>
-    <td>Quantity</td>
     <td><a href="/dbms/buyitem/addtocart/${item.iid }">Add to Cart</a></td>
     </tr>
     </c:forEach>
