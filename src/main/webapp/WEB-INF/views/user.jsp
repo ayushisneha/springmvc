@@ -41,7 +41,7 @@
     <br>
     <h2><a href="./allcat">view all items</a></h2>
     <h2><a href="./location">Locations</a></h2>
-    <h2><a href="profile">ADD PROFILE</a></h2>
+    <h2><a href="./order">MY ORDERS</a></h2>
     </div>
     <script src="webjars/jquery/1.11.1/jquery.min.js"></script>
     <script src="webjars/bootstrap/3.3.6/js/bootstrap.min.js"></script>

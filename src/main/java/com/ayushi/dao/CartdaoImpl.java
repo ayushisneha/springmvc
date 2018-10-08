@@ -75,9 +75,9 @@ public class CartdaoImpl implements Cartdao{
 		String sql="update cart set quantity="+quantity+",tprice="+price+"where iid="+iid+" and uid='"+uid+"'";
 		jdbcTemplate.execute(sql);
 	}
-	public void deleteItem(int itemId) {
+	public void deleteItem(int itemId,String uid) {
 		// TODO Auto-generated method stub
-		String sql="delete from cart where iid="+itemId;
+		String sql="delete from cart where iid="+itemId+" and uid='"+uid+"'";
 		jdbcTemplate.update(sql);
 	}
 	public float gettotal(String uid) {

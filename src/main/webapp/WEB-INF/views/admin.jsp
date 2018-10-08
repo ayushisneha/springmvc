@@ -29,6 +29,7 @@
     <h2> <a href="admin/allusers">All USERS</a></h2>
     <h2> <a href="admin/allcat">All Category</a></h2>
     <h2><a href="admin/alllocation">Location</a></h2>
+    <h2><a href="admin/order">BOOKINGS</a></h2>
     </div>
 </body>
 </html>

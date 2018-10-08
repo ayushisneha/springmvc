@@ -47,7 +47,6 @@
     <div>
         <label for="">Date</label>
         <input type="date"  name="bdate"
-               value="${date }"
                min="${date }" ,max="2018-12-31" />
     </div>
 

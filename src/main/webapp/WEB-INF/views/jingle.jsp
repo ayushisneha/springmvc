@@ -13,6 +13,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-hello I am jingle
+Congratulations your order has been placed!!
 </body>
 </html>

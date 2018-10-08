@@ -11,9 +11,13 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.ResultSetExtractor;
 
+import com.ayushi.model.BLocation;
 import com.ayushi.model.Cart;
 import com.ayushi.model.Event;
+import com.ayushi.model.GetOrder;
+import com.ayushi.model.Items;
 import com.ayushi.model.Location;
+import com.ayushi.model.Order;
 
 public class LocationdaoImpl implements Locationdao {
 	@Autowired
@@ -37,7 +41,7 @@ public class LocationdaoImpl implements Locationdao {
 	public List<Location> getlocbydate(String bdate) {
 		// TODO Auto-generated method stub
 		List<Location> list;
-		String sql="select * from location where lid not in (select lid from booked_location where bdate='"+bdate+"')";
+		String sql="select * from location where lid not in (select lid from booked_location where bdate= '"+bdate+"')";
 		list=(List<Location>) jdbcTemplate.query(sql, new BeanPropertyRowMapper<Location>(Location.class));
 		return list;
 	}
@@ -63,6 +67,7 @@ public class LocationdaoImpl implements Locationdao {
 	}
 	public List<Event> addevent() {
 		// TODO Auto-generated method stub
+		
 		List<Event> list;
 		String sql="select * from events";
 		list=(List<Event>) jdbcTemplate.query(sql, new BeanPropertyRowMapper<Event>(Event.class));
@@ -73,6 +78,66 @@ public class LocationdaoImpl implements Locationdao {
 		String sql="insert into booked_location set uid=?,lid=?,bdate=?,event=?";
 		Object object[]= {uid,lid,bdate,event};
 		jdbcTemplate.update(sql,object);
+	}
+	public List<BLocation> getlocbyuser(String uid) {
+		// TODO Auto-generated method stub
+		List<BLocation> list;
+		String sql="select * from booked_location,location where uid='"+uid+"'";
+		list=(List<BLocation>) jdbcTemplate.query(sql, new BeanPropertyRowMapper<BLocation>(BLocation.class));
+		return list;
+	}
+	public void placeorder(String uid,int bid) {
+		// TODO Auto-generated method stub
+		String sql="insert into orders set bid=?,uid=?";
+		Object object[]= {bid,uid};
+		jdbcTemplate.update(sql,object);
+		
+	}
+	public void placeitem(int iid, int quantity, float tprice, int bid) {
+		// TODO Auto-generated method stub
+		String p = "select cid from orders where bid="+bid;
+		//float p= Float.parseFloat(s);
+		int cid=jdbcTemplate.query(p, new ResultSetExtractor<Order>() {
+			public Order extractData(ResultSet rs) throws SQLException
+			{
+				if(rs.next())
+				{
+					Order it=new Order();
+					it.setCid(rs.getInt("cid"));
+					return it;
+				}
+				return null;
+			}
+		}).getCid();
+		String sql="insert into order_items set cid=?,iid=?,quantity=?,tprice=?";
+		Object object[]= {cid,iid,quantity,tprice};
+		jdbcTemplate.update(sql,object);
+	}
+	public List<Order> getorder(String uid) {
+		// TODO Auto-generated method stub
+		List<Order> list;
+		String sql="select * from orders where uid='"+uid+"'";
+		list=(List<Order>) jdbcTemplate.query(sql, new BeanPropertyRowMapper<Order>(Order.class));
+		return list;
+	}
+	public List<GetOrder> getorder2(int bid,int cid){
+		List<GetOrder> list;
+		String sql="select * from items,location,booked_location,order_items where bid="+bid+" and order_items.cid="+cid+" and order_items.iid=items.iid and booked_location.lid=location.lid";
+		list=(List<GetOrder>) jdbcTemplate.query(sql, new BeanPropertyRowMapper<GetOrder>(GetOrder.class));
+		return list;
+	}
+	public List<Order> getadminorder() {
+		// TODO Auto-generated method stub
+		List<Order> list;
+		String sql="select * from orders";
+		list=(List<Order>) jdbcTemplate.query(sql, new BeanPropertyRowMapper<Order>(Order.class));
+		return list;
+	}
+	public List<Location> getadminlocation() {
+		List<Location> list;
+		String sql="select * from location";
+		list=(List<Location>) jdbcTemplate.query(sql, new BeanPropertyRowMapper<Location>(Location.class));
+		return list;
 	}
 
 }

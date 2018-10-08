@@ -54,10 +54,12 @@ public class CartController {
 		return "redirect:/buyitem/cart";
 	}
 	@RequestMapping("buyitem/deleteitems/{itemId}")
-	public String deleteItem(@PathVariable(value="itemId") int itemId)
+	public String deleteItem(@PathVariable(value="itemId") int itemId,HttpServletRequest request)
 	{
-		cartdao.deleteItem(itemId);
+		String uid=request.getUserPrincipal().getName();
+		cartdao.deleteItem(itemId,uid);
 		return "redirect:/buyitem/cart";
 	}
+	
 
 }
