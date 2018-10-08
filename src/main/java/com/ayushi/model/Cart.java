@@ -5,7 +5,7 @@ public class Cart {
 	private int quantity;
 	private float tprice;
 	private String name;
-	private String price;
+	private float price;
 	public int getIid() {
 		return iid;
 	}
@@ -30,10 +30,10 @@ public class Cart {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getPrice() {
+	public float getPrice() {
 		return price;
 	}
-	public void setPrice(String price) {
+	public void setPrice(float price) {
 		this.price = price;
 	}
 

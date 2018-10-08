@@ -29,13 +29,6 @@ public class CategoryController {
 		model.addAttribute("list",list);
 		return "category";
 	}
-	@RequestMapping("location")
-	public String location(Model model)
-	{
-		List<Location> list=categorydao.getallloc();
-		model.addAttribute("list",list);
-		return "location";
-	}
 	@RequestMapping("admin/allusers")
 	public String allusers(Model model)
 	{

@@ -12,4 +12,5 @@
     <bean id="itemsdao" class="com.ayushi.dao.ItemsdaoImpl"></bean>
     <bean id="admindao" class="com.ayushi.dao.AdmindaoImpl"></bean>
     <bean id="cartdao" class="com.ayushi.dao.CartdaoImpl"></bean>
+    <bean id="locationdao" class="com.ayushi.dao.LocationdaoImpl"></bean>
 </beans>

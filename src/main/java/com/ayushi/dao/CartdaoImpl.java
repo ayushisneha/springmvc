@@ -50,14 +50,54 @@ public class CartdaoImpl implements Cartdao{
 	public List<Cart> getcart(String uid) {
 		// TODO Auto-generated method stub
 		List<Cart> list;
+//		String sql2="select * from items,cart where items.iid=cart.iid and cart.uid='"+uid+"'";
 		String sql="select items.iid,cart.quantity,cart.tprice,items.name,items.price from items inner join cart on items.iid=cart.iid where cart.uid='"+uid+"'";
 		list=(List<Cart>) jdbcTemplate.query(sql, new BeanPropertyRowMapper<Cart>(Cart.class));
 		return list;
 	}
 	public void addquantity(int quantity,int iid,String uid,Cart cart) {
 		// TODO Auto-generated method stub
-		String sql="update cart set quantity="+quantity+" where iid="+iid+" and uid='"+uid+"'";
+		String p = "select price from items where iid="+iid;
+		//float p= Float.parseFloat(s);
+		float price=jdbcTemplate.query(p, new ResultSetExtractor<Items>() {
+			public Items extractData(ResultSet rs) throws SQLException
+			{
+				if(rs.next())
+				{
+					Items it=new Items();
+					it.setPrice(rs.getFloat("price"));
+					return it;
+				}
+				return null;
+			}
+		}).getPrice();
+		price=price*quantity;
+		String sql="update cart set quantity="+quantity+",tprice="+price+"where iid="+iid+" and uid='"+uid+"'";
 		jdbcTemplate.execute(sql);
+	}
+	public void deleteItem(int itemId) {
+		// TODO Auto-generated method stub
+		String sql="delete from cart where iid="+itemId;
+		jdbcTemplate.update(sql);
+	}
+	public float gettotal(String uid) {
+		// TODO Auto-generated method stub
+		String sql="select sum(tprice) from cart where uid='"+uid+"'";
+		Cart total=jdbcTemplate.query(sql, new ResultSetExtractor<Cart>() {
+			public Cart extractData(ResultSet rs) throws SQLException
+			{
+				if(rs.next())
+				{
+					Cart cart=new Cart();
+					cart.setTprice(rs.getFloat("sum(tprice)"));
+					return cart;
+				}
+				return null;
+		}});
+		if(total!=null)
+			return total.getTprice();
+		
+		return 0;
 	}
 	
 

@@ -30,13 +30,6 @@ public class CategorydaoImpl implements Categorydao {
 		list=(List<Category>) jdbcTemplate.query(sql, new BeanPropertyRowMapper<Category>(Category.class));
 		return list;
 	}
-	public List<Location> getallloc() {
-		// TODO Auto-generated method stub
-		List<Location> list;
-		String sql="select * from location order by lname";
-		list=(List<Location>) jdbcTemplate.query(sql, new BeanPropertyRowMapper<Location>(Location.class));
-		return list;
-	}
 	
 	public void addCat(Category category) {
 		// TODO Auto-generated method stub

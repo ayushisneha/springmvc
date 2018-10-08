@@ -48,6 +48,9 @@
         <th>ITEM</th>
         <th>PRICE</th>
         <th>QUANTITY</th>
+        <th>UPDATE</th>
+        <th>SUB-TOTAL</th>
+        <th>REMOVE</th>
       </tr>
     </thead>
     <tbody>
@@ -57,7 +60,6 @@
 <td>${item.name }</td>
 <td>${item.price }</td>
 <td>${item.quantity }</td>
-
 <td>
 <form method ="post" action="update/${item.iid }" modelAttribute="cart" >
 <input type="int" name="quantity" value="${item.quantity }" />
@@ -65,12 +67,17 @@
 </form>
 </td>
 <td>${item.tprice }</td>
+
+<td><a href="deleteitems/${item.iid }">DELETE ITEM</a></td>
 </tr>
 
 </c:forEach> 
 </tbody>
 </table>
-
+<h2>TOTAL : ${total }</h2>
+<form method="post" action ="place">
+<input type="submit" value="place order" />
+</form>
 </div>
 <script src="/dbms/webjars/jquery/1.11.1/jquery.min.js"></script>
 <script src="/dbms/webjars/bootstrap/3.3.6/js/bootstrap.min.js"></script>

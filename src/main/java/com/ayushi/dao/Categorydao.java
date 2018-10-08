@@ -9,7 +9,6 @@ import com.ayushi.model.User;
 public interface Categorydao {
 	public List<Category> getallcat();
 	public void addCat(Category category);
-	public List<Location> getallloc();
 	public List<User> getallusers();
 
 }

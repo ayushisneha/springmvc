@@ -39,7 +39,9 @@ public class CartController {
 	{
 		String uid=request.getUserPrincipal().getName();
 		List<Cart> list=cartdao.getcart(uid);
+		Float total=cartdao.gettotal(uid);
 		model.addAttribute("list", list);
+		model.addAttribute("total",total);
 		return "cart";
 	}
 	@RequestMapping(value="buyitem/update/{iid}")
@@ -49,6 +51,12 @@ public class CartController {
 		Cart cart = new Cart();
 		int quantity = Integer.parseInt(request.getParameter("quantity"));
 		cartdao.addquantity(quantity, iid, uid,cart);
+		return "redirect:/buyitem/cart";
+	}
+	@RequestMapping("buyitem/deleteitems/{itemId}")
+	public String deleteItem(@PathVariable(value="itemId") int itemId)
+	{
+		cartdao.deleteItem(itemId);
 		return "redirect:/buyitem/cart";
 	}
 
