@@ -9,8 +9,8 @@
 </head>
 <body>
 <c:forEach items="${list }" var="loc">
-<h2>Name: ${loc.lname } <br> Price: ${loc.price } <br> Address: ${loc.address }</h2>
-<h3><a href="bookloc/${loc.lid }/${date }/addevent">BOOK</a></h3><br>
+<h2>${loc.event }</h2>
+<h2><a href="./select/${loc.event }">SELECT</a></h2>
 <br>
 <br>
 </c:forEach> 

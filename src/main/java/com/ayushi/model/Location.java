@@ -1,6 +1,5 @@
 package com.ayushi.model;
 
-import java.sql.Date;
 
 public class Location {
 	private int lid;

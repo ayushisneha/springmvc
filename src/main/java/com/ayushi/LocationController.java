@@ -17,6 +17,7 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import com.ayushi.dao.Locationdao;
 import com.ayushi.model.Cart;
+import com.ayushi.model.Event;
 import com.ayushi.model.Location;
 
 @Controller
@@ -35,7 +36,6 @@ public class LocationController {
 	{
 		Calendar cal=Calendar.getInstance();
 		model.addAttribute("date",LocalDate.now());
-		System.out.println(LocalDate.now());
 		List<Location> list=locationdao.getlocbydate(request.getParameter("bdate"));
 		model.addAttribute("list",list);
 		return "locmodfy";
@@ -46,8 +46,25 @@ public class LocationController {
 		String uid=request.getUserPrincipal().getName();
 		Cart cart=new Cart();
 		locationdao.book(lid, uid, cart,request.getParameter("bdate"));
-		return "redirect:/allcat";
+		return "";
 	}
+	@RequestMapping(value="bookloc/{lid}/{date}/addevent",method=RequestMethod.GET)
+	public String bookloc(Model model,@PathVariable(value="lid") int lid,HttpServletRequest request) 
+	{
+		List<Event> list=locationdao.addevent();
+		model.addAttribute("list",list);
+		return "locevent";
+	}
+	@RequestMapping(value="bookloc/{lid}/{bdate}/select/{event}",method=RequestMethod.GET)
+	public String booking(Model model,@PathVariable(value="lid") int lid,@PathVariable(value="bdate") String bdate,@PathVariable(value="event") String event,HttpServletRequest request)
+	{
+		String uid=request.getUserPrincipal().getName();
+		locationdao.booklocation(uid,lid,bdate,event);
+		return "jingle";
+	}
+	
+	
+	
 	@RequestMapping(value="upload",method=RequestMethod.POST)
 	public String upload(Model model,@RequestParam CommonsMultipartFile file)
 	{

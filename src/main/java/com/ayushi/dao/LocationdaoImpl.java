@@ -12,6 +12,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.ResultSetExtractor;
 
 import com.ayushi.model.Cart;
+import com.ayushi.model.Event;
 import com.ayushi.model.Location;
 
 public class LocationdaoImpl implements Locationdao {
@@ -59,6 +60,19 @@ public class LocationdaoImpl implements Locationdao {
 			jdbcTemplate.update(sql,object);
 		}
 		
+	}
+	public List<Event> addevent() {
+		// TODO Auto-generated method stub
+		List<Event> list;
+		String sql="select * from events";
+		list=(List<Event>) jdbcTemplate.query(sql, new BeanPropertyRowMapper<Event>(Event.class));
+		return list;
+	}
+	public void booklocation(String uid, int lid, String bdate, String event) {
+		// TODO Auto-generated method stub
+		String sql="insert into booked_location set uid=?,lid=?,bdate=?,event=?";
+		Object object[]= {uid,lid,bdate,event};
+		jdbcTemplate.update(sql,object);
 	}
 
 }
