@@ -34,14 +34,7 @@
 	<br>
 	<br>
 <%
-List<Item> list=(List<Item>)  request.getAttribute("list");
-Iterator itr=list.iterator();
-while(itr.hasNext())
-{
-	Item item=(Item)itr.next();
-	out.println("<div style=\"background-color:#2196F3;;float:left;width:30%;margin-left:5%;margin-top:5%\"><h4>"+item.getName() +"<a href=\"buyitem/"+item.getItemId() +"\">Buy this item</a></h4></div>");
-	
-}
+
 
 %>
 <script src="webjars/jquery/1.11.1/jquery.min.js"></script>
