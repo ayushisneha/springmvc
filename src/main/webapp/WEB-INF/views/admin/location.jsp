@@ -16,16 +16,30 @@
 <title>Location</title>
 </head>
 <body>
-
+<nav class="navbar navbar-inverse navbar-fixed-top" style="background: #3366cc !important">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#">RANJAN DECORATORS</a>
+			</div>
+			<ul class="nav navbar-nav">
+				<li class="active"><a href="/dbms/admin">Home</a></li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="<c:url value="/j_spring_security_logout" />"><span class="glyphicon glyphicon-log-out"></span>
+						Logout</a></li>
+			</ul>
+		</div>
+	</nav>
 	<br>
 	<br>
 	<br>
 <div class="container">
+<h2><a href="addloc"><span class="glyphicon glyphicon-plus"></span>ADD LOCATION</a></h2>
 
-
-
+<div class="list-group">
 <c:forEach items="${list }" var="loc">
-<h2>Name: ${loc.lname } <br> Price: ${loc.price } <br> Address: ${loc.address }</h2>
+<li class="list-group-item">Name: ${loc.lname } <br> Price: ${loc.price } <br> Address: ${loc.address }</li>
+
 <!--  <h3><a href="addtocart/${loc.lid }">Add to Cart</a></h3><br>-->
 <br>
 <br>

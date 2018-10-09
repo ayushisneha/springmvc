@@ -6,10 +6,13 @@ import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -20,6 +23,7 @@ import com.ayushi.dao.Cartdao;
 import com.ayushi.dao.Locationdao;
 import com.ayushi.model.BLocation;
 import com.ayushi.model.Cart;
+import com.ayushi.model.Category;
 import com.ayushi.model.Event;
 import com.ayushi.model.GetOrder;
 import com.ayushi.model.Location;
@@ -42,7 +46,8 @@ public class LocationController {
 	public String locationt(Model model,HttpServletRequest request)
 	{
 		Calendar cal=Calendar.getInstance();
-		model.addAttribute("date",LocalDate.now());
+//		model.addAttribute("date",LocalDate.now());
+		model.addAttribute("date",request.getParameter("bdate"));
 		List<Location> list=locationdao.getlocbydate(request.getParameter("bdate"));
 		model.addAttribute("list",list);
 		return "locmodfy";
@@ -129,6 +134,27 @@ public class LocationController {
 		model.addAttribute("list",list);
 		return "admin/location";
 	}
+	@RequestMapping(value="admin/addloc",method=RequestMethod.GET)
+	public String addcat(Model model)
+	{
+		Location location=new Location();
+		model.addAttribute("location",location);
+		return "admin/addloc";
+	}
+	@RequestMapping(value="admin/addloc",method=RequestMethod.POST)
+	public String addItem(@Valid @ModelAttribute("Location") Location location,BindingResult result,Model model) 
+	{
+		if(result.hasErrors())
+		{
+			model.addAttribute("location",location);
+			return "admin/addcategory";
+		}
+		else {
+			locationdao.addloc(location);
+			return "redirect:/admin";
+		}
+	}
+	
 	@RequestMapping("admin/order/{bid}/{cid}")
 	public String getadminorderbybid(Model model,@PathVariable(value="bid") int bid,@PathVariable(value="cid") int cid)
 	{

@@ -15,7 +15,8 @@
 <meta charset="UTF-8">
 <title>Location</title>
 </head>
-<body>
+<body  style="background: #ffe6e6">
+<img alt="" src='<c:url value="/resources/Screenshot(1).png"></c:url>'> 
 <nav class="navbar navbar-inverse navbar-fixed-top"
 		style="background: #ffcccc !important">
 		<div class="container-fluid">
@@ -47,7 +48,7 @@
     <div>
         <label for="">Date</label>
         <input type="date"  name="bdate"
-               min="${date }" ,max="2018-12-31" />
+               min="${date }" ,max="2018-12-31" required="required" />
     </div>
 
 </fieldset>
@@ -55,10 +56,10 @@
 
 <input value="Submit" type="submit" class="btn btn-success">
 </form>
-
+<div class="list-group">
+<h2>ALL LOCATIONS</h2>
 <c:forEach items="${list }" var="loc">
-<h2>Name: ${loc.lname } <br> Price: ${loc.price } <br> Address: ${loc.address }</h2>
-<!--  <h3><a href="addtocart/${loc.lid }">Add to Cart</a></h3><br>-->
+<li class="list-group-item">Name: ${loc.lname } <br> Price: ${loc.price } <br> Address: ${loc.address }</li>
 <br>
 <br>
 </c:forEach> 

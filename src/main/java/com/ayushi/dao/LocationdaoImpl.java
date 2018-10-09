@@ -139,5 +139,11 @@ public class LocationdaoImpl implements Locationdao {
 		list=(List<Location>) jdbcTemplate.query(sql, new BeanPropertyRowMapper<Location>(Location.class));
 		return list;
 	}
+	public void addloc(Location location) {
+		// TODO Auto-generated method stub
+		String sql="insert into location set lname=?,address=?,price=?";
+		Object[] object= {location.getLname(),location.getAddress(),location.getPrice()};
+		jdbcTemplate.update(sql,object);
+	}
 
 }

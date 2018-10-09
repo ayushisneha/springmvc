@@ -1,6 +1,5 @@
 <%@page import="java.util.Iterator"%>
 <%@page import="org.springframework.ui.Model"%>
-<%@page import="com.brijesh.model.Item"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>

@@ -22,4 +22,5 @@ public interface Locationdao {
 	public List<GetOrder> getorder2(int bid,int cid);
 	public List<Order> getadminorder();
 	public List<Location> getadminlocation();
+	public void addloc(Location location);
 }
